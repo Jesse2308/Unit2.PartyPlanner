@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="index.css"/>
-    <script defer src="index.css"></script>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Party Planner</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>Party Planner</h1>
+    <form>
+      <label>Event Name:</label>
+      <input id="eventName" type="text" placeholder="Event Name" />
+      <label>Description</label>
+      <input id="description" type="text" placeholder="Type of Party"/>
+      <label>Date/Time</label>
+      <input id="eventDate" type="datetime" placeholder="Date & Time"/>
+      <label>Location</label>
+      <input id="eventLocation" type="text" placeholder="Where the Party at"/>
+      <button>Add Event</button>
+    </form>
+    <main>
+      <section>
+        <h2>Event Name</h2>
+        <p>Description</p>
+        <p>Date and Time</p>
+        <p>Location</p>
+      </section>
+    </main>
+    <script src="index.js"></script>
+  </body>
 </html>
