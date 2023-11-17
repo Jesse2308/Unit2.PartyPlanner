@@ -1,18 +1,18 @@
-const API_URL_ =
-  `https://fsa-crud-2aa9294fe819.herokuapp.com/api/2308-acc-et-web-pt-a/events`;
+const BASE_URL_ = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/2308-acc-et-web-pt-a/events`;
 
-const mainEl = document.querySelector("main");
-const formEl = document.querySelector("form");
+const mainEl = document.getElementById("mainid");
+const formEl = document.getElementById("formid");
 const eventName = document.getElementById("eventName");
 const description = document.getElementById("description");
-const eventDate = document.getElementById("eventDate");
-const eventLocation = document.getElementById("eventLocation");
-
+const eventDate = document.querySelector("#dateIso");
+const eventLocation = document.querySelector("#eventLocation");
+// console.log("form", formid);
+// console.log("eventdate", dateIso);
 async function getEvents() {
   try {
-    const response = await fetch(API_URL_);
+    const response = await fetch(BASE_URL_);
     const data = await response.json();
-    console.log(data.data);
+    console.log("data", data.data);
     return data.data;
   } catch (err) {
     console.error(err);
@@ -39,12 +39,22 @@ async function eventApp() {
   render(events);
 }
 eventApp();
-
+// console.log("name", eventName.value);
+// console.log("description", description.value);
+// console.log("date", eventDate.vaule);
+// console.log("location", eventLocation.vaule);
+// console.log("eventName", eventName);
 formEl.addEventListener("submit", async (e) => {
   e.preventDefault();
   try {
+    // console.log("name", eventName.value);
+    // console.log("description", description.value);
+    // console.log("date", eventDate.value);
+    // console.log("location", eventLocation.value);
+    // console.log("eventName", eventName);
 
-   const response = await fetch(API_URL_,{
+    const dateIso = new Date(eventDate.value).toISOString();
+    await fetch(BASE_URL_, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +62,7 @@ formEl.addEventListener("submit", async (e) => {
       body: JSON.stringify({
         name: eventName.value,
         description: description.value,
-        date: eventDate.value,
+        date: dateIso,
         location: eventLocation.value,
       }),
     });
@@ -66,15 +76,13 @@ formEl.addEventListener("submit", async (e) => {
     if (!response.ok) {
       throw new Error("Failed to create Party");
     }
-  } catch (err) {
-  }
+  } catch (err) {}
 });
-
 
 mainEl.addEventListener("click", async (e) => {
   if (e.target.matches("button")) {
     const id = e.target.dataset.id;
-    await fetch(`${BASE_URL}/${id}`, {
+    await fetch(`${BASE_URL_}/${id}`, {
       method: "DELETE",
     });
     eventApp();

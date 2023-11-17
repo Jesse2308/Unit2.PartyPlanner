@@ -8,18 +8,19 @@
   </head>
   <body>
     <h1>Party Planner</h1>
-    <form>
+    <form id="formid">
       <label>Event Name:</label>
       <input id="eventName" type="text" placeholder="Event Name" />
       <label>Description</label>
-      <input id="description" type="text" placeholder="Type of Party"/>
+      <input id="description" type="text" placeholder="Type of Party" />
       <label>Date/Time</label>
-      <input id="eventDate" type="datetime" placeholder="Date & Time"/>
+      <input id="dateIso" type="datetime" placeholder="Date & Time" />
       <label>Location</label>
-      <input id="eventLocation" type="text" placeholder="Where the Party at"/>
-      <button>Add Event</button>
+      <input id="eventLocation" type="text" placeholder="Where the Party at" />
+      <!-- <button>Add Event</button> -->
+      <input type="submit" value="Add Event" />
     </form>
-    <main>
+    <main id="mainid">
       <section>
         <h2>Event Name</h2>
         <p>Description</p>
